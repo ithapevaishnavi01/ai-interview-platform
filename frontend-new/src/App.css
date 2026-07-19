@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  background: #111827;
+  color: white;
+  padding: 25px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.logo span {
+  margin-right: 8px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar button {
+  border: none;
+  background: transparent;
+  color: #aeb7c8;
+  padding: 14px;
+  text-align: left;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.sidebar button:hover,
+.sidebar button.active {
+  background: #374151;
+  color: white;
+}
+
+.sidebar button span {
+  margin-right: 12px;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  background: #1f2937;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.sidebar-bottom p {
+  margin: 0 0 8px;
+}
+
+.sidebar-bottom small {
+  color: #9ca3af;
+}
+
+.main-content {
+  flex: 1;
+  padding: 35px 45px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.topbar h1 {
+  margin: 0 0 8px;
+}
+
+.topbar p {
+  color: #6b7280;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #4f46e5;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #4338ca, #7c3aed);
+  color: white;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-card h2 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.hero-card p {
+  max-width: 550px;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.hero-icon {
+  font-size: 110px;
+}
+
+.primary-btn,
+.practice-card button,
+.company-card button,
+.topic-card button {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary-btn {
+  background: white;
+  color: #4338ca;
+  margin-top: 15px;
+}
+
+.section-title {
+  margin-top: 35px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.stat-card,
+.practice-card,
+.company-card,
+.topic-card,
+.interview-box,
+.progress-box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card span,
+.large-icon {
+  font-size: 30px;
+}
+
+.stat-card h3 {
+  font-size: 28px;
+  margin: 12px 0 5px;
+}
+
+.stat-card p,
+.practice-card p,
+.company-card p,
+.topic-card p {
+  color: #6b7280;
+}
+
+.practice-grid,
+.company-grid,
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.practice-card button,
+.company-card button,
+.topic-card button {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.page {
+  max-width: 1100px;
+}
+
+.page h2 {
+  font-size: 32px;
+}
+
+.interview-box {
+  max-width: 600px;
+  margin-top: 30px;
+}
+
+.interview-box select {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.interview-box .primary-btn {
+  background: #4338ca;
+  color: white;
+}
+
+.progress-box {
+  margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 210px;
+  }
+
+  .stats-grid,
+  .practice-grid,
+  .company-grid,
+  .topic-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
