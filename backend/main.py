@@ -40,6 +40,8 @@ def health_check():
 @app.get("/api/dashboard")
 def dashboard():
     return {
+
+        #njkfn
         "questions_solved": 48,
         "interviews_completed": 12,
         "current_streak": 8,
