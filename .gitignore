@@ -1,19 +1,14 @@
 # Python
+backend/venv/
 __pycache__/
 *.pyc
-venv/
-.env
 
 # Node
-node_modules/
-dist/
-
-# IDE
-.vscode/
-.idea/
+frontend-new/node_modules/
+frontend-new/dist/
 
 # Environment
-.env.local
+.env
 
-# OS
-.DS_Store
+# Database
+*.db

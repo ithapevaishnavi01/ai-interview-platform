@@ -2,223 +2,264 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [activePage, setActivePage] = useState("dashboard");
+  const [activePage, setActivePage] = useState("home");
 
-  const menuItems = [
-    { id: "dashboard", name: "Dashboard", icon: "🏠" },
-    { id: "companies", name: "Company Questions", icon: "🏢" },
-    { id: "dsa", name: "DSA Practice", icon: "💻" },
-    { id: "interview", name: "AI Interview", icon: "🤖" },
-    { id: "progress", name: "My Progress", icon: "📊" },
+  const companies = [
+    { name: "Google", icon: "G", color: "google" },
+    { name: "Amazon", icon: "A", color: "amazon" },
+    { name: "Microsoft", icon: "M", color: "microsoft" },
+    { name: "Infosys", icon: "I", color: "infosys" },
+    { name: "TCS", icon: "T", color: "tcs" },
+    { name: "Accenture", icon: "A", color: "accenture" },
+  ];
+
+  const features = [
+    {
+      icon: "🤖",
+      title: "AI Mock Interviews",
+      description: "Practice with an AI interviewer and get instant feedback.",
+    },
+    {
+      icon: "🏢",
+      title: "Company Preparation",
+      description: "Prepare with company-wise interview questions.",
+    },
+    {
+      icon: "💻",
+      title: "DSA Practice",
+      description: "Improve your problem-solving skills with curated questions.",
+    },
+    {
+      icon: "📊",
+      title: "Track Progress",
+      description: "Monitor your preparation and become interview-ready.",
+    },
   ];
 
   return (
     <div className="app">
-      <aside className="sidebar">
-        <div className="logo">
-          <span>⚡</span>
-          CareerForge AI
+      <nav className="navbar">
+        <div className="logo" onClick={() => setActivePage("home")}>
+          <span className="logo-icon">⚡</span>
+          Career<span>Forge</span>
+          <small>AI</small>
         </div>
 
-        <nav>
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              className={activePage === item.id ? "active" : ""}
-              onClick={() => setActivePage(item.id)}
-            >
-              <span>{item.icon}</span>
-              {item.name}
-            </button>
-          ))}
-        </nav>
-
-        <div className="sidebar-bottom">
-          <p>🚀 Keep learning!</p>
-          <small>Prepare today. Succeed tomorrow.</small>
+        <div className="nav-links">
+          <button onClick={() => setActivePage("home")}>Home</button>
+          <button onClick={() => setActivePage("companies")}>
+            Companies
+          </button>
+          <button onClick={() => setActivePage("dsa")}>DSA Practice</button>
+          <button onClick={() => setActivePage("interview")}>
+            AI Interview
+          </button>
         </div>
-      </aside>
 
-      <main className="main-content">
-        <header className="topbar">
-          <div>
-            <h1>Good morning, Student 👋</h1>
-            <p>Ready to improve your interview skills today?</p>
-          </div>
+        <button className="login-btn">Login</button>
+      </nav>
 
-          <div className="profile">
-            <div className="avatar">V</div>
-            <span>Student</span>
-          </div>
-        </header>
+      {activePage === "home" && (
+        <>
+          <section className="hero">
+            <div className="hero-content">
+              <div className="badge">✨ AI-powered career preparation</div>
 
-        {activePage === "dashboard" && (
-          <section>
-            <div className="hero-card">
-              <div>
-                <p className="eyebrow">YOUR CAREER JOURNEY</p>
-                <h2>Prepare smarter.<br />Get hired faster.</h2>
-                <p>
-                  Practice company-specific questions, master DSA,
-                  and experience realistic AI interviews.
-                </p>
+              <h1>
+                Prepare smarter.
+                <br />
+                <span>Get hired faster.</span>
+              </h1>
+
+              <p>
+                Your personal AI career companion for company-wise interview
+                preparation, DSA practice, and realistic mock interviews.
+              </p>
+
+              <div className="hero-buttons">
                 <button
                   className="primary-btn"
                   onClick={() => setActivePage("interview")}
                 >
                   Start AI Interview →
                 </button>
+
+                <button
+                  className="secondary-btn"
+                  onClick={() => setActivePage("companies")}
+                >
+                  Explore Companies
+                </button>
               </div>
 
-              <div className="hero-icon">🤖</div>
-            </div>
+              <div className="stats">
+                <div>
+                  <strong>10K+</strong>
+                  <span>Questions</span>
+                </div>
 
-            <h2 className="section-title">Your Progress</h2>
+                <div>
+                  <strong>50+</strong>
+                  <span>Companies</span>
+                </div>
 
-            <div className="stats-grid">
-              <div className="stat-card">
-                <span>💻</span>
-                <h3>0</h3>
-                <p>DSA Problems Solved</p>
-              </div>
-
-              <div className="stat-card">
-                <span>🤖</span>
-                <h3>0</h3>
-                <p>AI Interviews</p>
-              </div>
-
-              <div className="stat-card">
-                <span>🎯</span>
-                <h3>0%</h3>
-                <p>Average Score</p>
-              </div>
-
-              <div className="stat-card">
-                <span>🔥</span>
-                <h3>0</h3>
-                <p>Day Streak</p>
+                <div>
+                  <strong>AI</strong>
+                  <span>Powered</span>
+                </div>
               </div>
             </div>
 
-            <h2 className="section-title">Quick Practice</h2>
+            <div className="hero-card">
+              <div className="ai-orb">🤖</div>
+              <h3>AI Interviewer</h3>
+              <p>Ready to help you become interview-ready.</p>
 
-            <div className="practice-grid">
-              <div className="practice-card">
-                <span className="large-icon">🏢</span>
-                <h3>Company Questions</h3>
-                <p>Practice real interview questions from top companies.</p>
-                <button onClick={() => setActivePage("companies")}>
-                  Explore Questions →
-                </button>
+              <div className="progress-card">
+                <span>Your preparation</span>
+                <strong>72%</strong>
+                <div className="progress-bar">
+                  <div></div>
+                </div>
               </div>
 
-              <div className="practice-card">
-                <span className="large-icon">💻</span>
-                <h3>DSA Practice</h3>
-                <p>Improve your problem-solving skills with DSA questions.</p>
-                <button onClick={() => setActivePage("dsa")}>
-                  Start Practicing →
-                </button>
-              </div>
-
-              <div className="practice-card">
-                <span className="large-icon">🤖</span>
-                <h3>AI Mock Interview</h3>
-                <p>Experience a personalized interview with AI.</p>
-                <button onClick={() => setActivePage("interview")}>
-                  Take Interview →
-                </button>
-              </div>
+              <button
+                className="card-btn"
+                onClick={() => setActivePage("interview")}
+              >
+                Start Practice
+              </button>
             </div>
           </section>
-        )}
 
-        {activePage === "companies" && (
-          <section className="page">
-            <h2>Company Interview Questions 🏢</h2>
-            <p>Choose a company to start practicing.</p>
-
-            <div className="company-grid">
-              {["Google", "Amazon", "Microsoft", "TCS", "Infosys", "Accenture"].map(
-                (company) => (
-                  <div className="company-card" key={company}>
-                    <h3>{company}</h3>
-                    <p>Interview questions and preparation</p>
-                    <button>View Questions →</button>
-                  </div>
-                )
-              )}
+          <section className="section">
+            <div className="section-heading">
+              <span>Everything you need</span>
+              <h2>One platform. Complete preparation.</h2>
             </div>
-          </section>
-        )}
 
-        {activePage === "dsa" && (
-          <section className="page">
-            <h2>DSA Practice 💻</h2>
-            <p>Master Data Structures and Algorithms.</p>
-
-            <div className="topic-grid">
-              {[
-                "Arrays",
-                "Strings",
-                "Linked List",
-                "Stack & Queue",
-                "Trees",
-                "Graphs",
-                "Dynamic Programming",
-              ].map((topic) => (
-                <div className="topic-card" key={topic}>
-                  <h3>{topic}</h3>
-                  <p>0 problems solved</p>
-                  <button>Practice →</button>
+            <div className="features-grid">
+              {features.map((feature) => (
+                <div className="feature-card" key={feature.title}>
+                  <div className="feature-icon">{feature.icon}</div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                  <button onClick={() => setActivePage("interview")}>
+                    Explore →
+                  </button>
                 </div>
               ))}
             </div>
           </section>
-        )}
 
-        {activePage === "interview" && (
-          <section className="page interview-page">
-            <h2>AI Mock Interview 🤖</h2>
-            <p>Your personal AI interviewer is ready.</p>
+          <section className="section companies-section">
+            <div className="section-heading">
+              <span>Prepare for your dream company</span>
+              <h2>Company-wise preparation</h2>
+            </div>
 
-            <div className="interview-box">
-              <h3>Start a personalized interview</h3>
-
-              <select>
-                <option>Select Company</option>
-                <option>Google</option>
-                <option>Amazon</option>
-                <option>Microsoft</option>
-              </select>
-
-              <select>
-                <option>Select Role</option>
-                <option>Software Engineer</option>
-                <option>Frontend Developer</option>
-                <option>Backend Developer</option>
-              </select>
-
-              <button className="primary-btn">
-                Start Interview 🤖
-              </button>
+            <div className="companies-grid">
+              {companies.map((company) => (
+                <div
+                  className="company-card"
+                  key={company.name}
+                  onClick={() => setActivePage("companies")}
+                >
+                  <div className={`company-icon ${company.color}`}>
+                    {company.icon}
+                  </div>
+                  <h3>{company.name}</h3>
+                  <p>Interview preparation</p>
+                  <span>View questions →</span>
+                </div>
+              ))}
             </div>
           </section>
-        )}
+        </>
+      )}
 
-        {activePage === "progress" && (
-          <section className="page">
-            <h2>My Progress 📊</h2>
-            <p>Track your interview preparation journey.</p>
+      {activePage === "companies" && (
+        <section className="page-section">
+          <div className="page-header">
+            <span>COMPANY PREPARATION</span>
+            <h1>Prepare for your dream company 🚀</h1>
+            <p>Practice real interview topics and improve your confidence.</p>
+          </div>
 
-            <div className="progress-box">
-              <h3>Your progress will appear here</h3>
-              <p>Complete DSA problems and AI interviews to see your analytics.</p>
-            </div>
-          </section>
-        )}
-      </main>
+          <div className="companies-grid">
+            {companies.map((company) => (
+              <div className="company-card large" key={company.name}>
+                <div className={`company-icon ${company.color}`}>
+                  {company.icon}
+                </div>
+                <h3>{company.name}</h3>
+                <p>Technical + HR interview preparation</p>
+                <button className="primary-btn">Start Preparation →</button>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {activePage === "dsa" && (
+        <section className="page-section">
+          <div className="page-header">
+            <span>DSA PRACTICE</span>
+            <h1>Master Data Structures & Algorithms 💻</h1>
+            <p>Practice problems and improve your problem-solving skills.</p>
+          </div>
+
+          <div className="dsa-grid">
+            {["Arrays", "Strings", "Linked Lists", "Trees", "Graphs", "Dynamic Programming"].map(
+              (topic) => (
+                <div className="dsa-card" key={topic}>
+                  <h3>{topic}</h3>
+                  <p>Practice curated questions</p>
+                  <button className="secondary-btn">Practice →</button>
+                </div>
+              )
+            )}
+          </div>
+        </section>
+      )}
+
+      {activePage === "interview" && (
+        <section className="page-section interview-page">
+          <div className="ai-interview-card">
+            <div className="ai-orb big">🤖</div>
+            <span>AI MOCK INTERVIEW</span>
+            <h1>Your AI interviewer is ready.</h1>
+            <p>
+              Practice a realistic interview and receive personalized feedback
+              on your performance.
+            </p>
+
+            <select>
+              <option>Select Company</option>
+              <option>Google</option>
+              <option>Amazon</option>
+              <option>Microsoft</option>
+              <option>Infosys</option>
+            </select>
+
+            <select>
+              <option>Select Role</option>
+              <option>Software Developer</option>
+              <option>DevOps Engineer</option>
+              <option>Cloud Engineer</option>
+            </select>
+
+            <button className="primary-btn">Start Interview 🚀</button>
+          </div>
+        </section>
+      )}
+
+      <footer>
+        <div className="logo">
+          ⚡ Career<span>Forge</span> <small>AI</small>
+        </div>
+        <p>Build your future. One question at a time.</p>
+      </footer>
     </div>
   );
 }
