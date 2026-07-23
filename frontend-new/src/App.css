@@ -400,7 +400,8 @@ footer {
 }
 
 
-@media (max-width: 600px) {
+@media (max
+-width: 600px) {
   .features-grid,
   .companies-grid,
   .dsa-grid {
