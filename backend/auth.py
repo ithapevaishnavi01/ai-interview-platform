@@ -1,29 +1,51 @@
-from passlib.context import CryptContext
+from datetime import datetime, timedelta, timezone
+
 from jose import jwt
-from datetime import datetime, timedelta
+from passlib.context import CryptContext
 
 
+# JWT configuration
 SECRET_KEY = "careerforge-secret-key-change-later"
 ALGORITHM = "HS256"
 
+
+# Password hashing
 pwd_context = CryptContext(
     schemes=["bcrypt"],
     deprecated="auto"
 )
 
 
-def hash_password(password: str):
+def hash_password(password: str) -> str:
+    """
+    Hash a plain text password.
+    """
     return pwd_context.hash(password)
 
 
-def verify_password(plain_password: str, hashed_password: str):
-    return pwd_context.verify(plain_password, hashed_password)
+def verify_password(
+    plain_password: str,
+    hashed_password: str
+) -> bool:
+    """
+    Verify a password against its hash.
+    """
+    return pwd_context.verify(
+        plain_password,
+        hashed_password
+    )
 
 
-def create_access_token(data: dict):
+def create_access_token(data: dict) -> str:
+    """
+    Create a JWT access token.
+    """
+
     to_encode = data.copy()
 
-    expire = datetime.utcnow() + timedelta(hours=24)
+    expire = datetime.now(
+        timezone.utc
+    ) + timedelta(hours=24)
 
     to_encode.update({
         "exp": expire
